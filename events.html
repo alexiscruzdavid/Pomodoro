@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>education</title>
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/all.css">
+	<link rel="stylesheet" type="text/css" href="css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="css/lightbox.css">
+	<link rel="stylesheet" type="text/css" href="css/flexslider.css">
+	<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.rateyo.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery.mmenu.all.css" />
+	<link rel="stylesheet" type="text/css" href="inner-page-style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="page" class="site">
+		
+		<!-- Header Close -->
+		<div class="banner">
+			<div class="owl-four owl-carousel">
+				<img src="images/page-banner.jpg" alt="Image of Bannner">
+				<img src="images/page-banner2.jpg" alt="Image of Bannner">
+				<img src="images/page-banner3.jpg" alt="Image of Bannner">
+			</div>
+			<div class="container">
+				<iframe class = "studytimer youtube" id="video" width="420" height="315"
+						src="https://www.youtube.com/embed/tgbNymZ7vqY?" allowfullscreen></iframe>
+				
+				<iframe class="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/glEiPXAYE-U?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe>
+				<h1><p class="studytimer" id="demo"></p></h1>
+				<button class="studytimer" onClick="start()">Start</button>
+				<button class="studytimer" onClick="stop()">Pause</button>
+			</div>
+		</div>
+	</div>
+		
+		
+		<!-- Upcomming Events Closed -->
+		
+		<!-- End of Query Section -->
+	<script>
+		var timerOn = true;
+// Set the date we're counting down to
+var countDownTime = 2000;//1500000;
+var counter = 0;
+// Update the count down every 1 second
+		
+var x = setInterval(function() {
+	if(timerOn){
+		// Get today's date and time
+		counter += 1000;
+  
+	
+    
+  // Find the distance between now and the count down date
+  var distance = countDownTime - counter;
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  hours = (hours == 0) ? "" : hours + ":";
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  seconds = (seconds >= 10) ? seconds : "0" + seconds;
+	
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML =   hours
+  + minutes + ":" + seconds ;
+    
+  // If the count down is over, write some text 
+  if (distance <= 0) {
+    clearInterval(x);
+	  
+	  for(var i = 0; i <document.getElementsByClassName("youtube").length;i++ ){
+		  document.getElementsByClassName("youtube").item(i).contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*'); 
+	  }
+	  
+//	  for(var i = 0; i <  document.getElementsByClassName("studytimer").length; i++){
+//		  document.getElementsByClassName("studytimer").item(i).style.display = "none";
+//	  }
+//	  
+	  
+
+	document.getElementsByClassName("youtube-video")[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+
+	 
+  }
+  }
+}, 1000);
+		
+		
+function start(){
+	timerOn = true;
+}
+		
+function stop(){
+	timerOn = false;
+}
+</script>
+	<script>
+		</script>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/lightbox.js"></script>
+	<script type="text/javascript" src="js/all.js"></script>
+	<script type="text/javascript" src="js/owl.carousel.js"></script>
+	<script type="text/javascript" src="js/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="js/jquery.rateyo.js"></script>
+	<script type="text/javascript" src="js/jquery.mmenu.all.js"></script>
+	<script type="text/javascript" src="js/custom.js"></script>
+</body>
+</html>
