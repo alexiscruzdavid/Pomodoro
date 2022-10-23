@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>education</title>
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/all.css">
+	<link rel="stylesheet" type="text/css" href="css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="css/lightbox.css">
+	<link rel="stylesheet" type="text/css" href="css/flexslider.css">
+	<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.rateyo.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery.mmenu.all.css" />
+	<link rel="stylesheet" type="text/css" href="inner-page-style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="page" class="site">
+		
+		<header class="site-header">
+			
+			<!-- Top header Close -->
+			<div class="main-header">
+				<div class="container">
+					<div style = "position: absolute; right:80px;">
+					<div class="logo-wrap" itemprop="logo">
+						
+						<!-- <h1>Education</h1> -->
+						</div>
+					</div>
+					<div class="nav-wrap">
+						<nav class="nav-desktop">
+							<ul class="menu-list">
+								<li class="menu-parent">Settings
+									<ul class="sub-menu">
+										<li class="menu-parent">Timers
+											<ul class="sub-menu">
+												<li><a href="">Break Timer</a>
+												<form action="/action_page.php">
+												  <label for="quantity"></label>
+												  <input type="number" id="quantity" name="study-input" min="1" max="500">
+												  <input type="submit">
+												</form></li>
+												<li><a href="">Studying Timer</a>
+												<form action="/action_page.php">
+  <label for="quantity"></label>
+  <input type="number" id="quantity" name="study-input" min="1" max="500">
+  <input type="submit">
+</form></li>
+											</ul>
+										</li>
+										<li class="menu-parent">Backgrounds
+											<ul class="sub-menu">
+												<li class="menu-parent">Break Themes
+													<ul class="sub-menu">
+														<li><button onClick="changeBg(0)">Mountains</button></li>
+														<li><button onClick="changeBg(1)">Rain</button></li>
+														<li><button onClick="changeBg(2)">Trees</button></li>
+														<li><button onClick="changeBg(3)">Ocean</button></li>
+														<li><button onClick="changeBg(4)">White noise</button></li>
+													</ul>
+												</li>
+												<li class="menu-parent">Study Video
+													<ul class="sub-menu">
+														<li><a href="">Paste URL here</a>
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+						<div id="bar">
+							<i class="fas fa-bars"></i>
+						</div>
+						<div id="close">
+							<i class="fas fa-times"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div>
+		
+		</div>
+		
+		<!-- Header Close -->
+		<div class="banner">
+				<video playsinline autoplay loop muted id = "video2">
+					
+					<source src="beach.mp4" type = "video/mp4"/>
+				</video>
+			
+			<video hidden = "hidden" autoplay id = "video3">
+					<source src="waves.mp4" type = "video/mp4"/>
+				</video>
+			<script>
+				let vid33 = document.getElementById("video3");
+				vid33.play();
+				
+			</script>
+			
+			<div class="container">
+			<video class="breaktimer" width="840 "  id="hotdog" hidden="hidden" controls>
+					  <source src="videoplayback.mp4" type="video/mp4">
+				</video>
+			</div>
+			
+					
+			
+			<section id="mid">
+			</section>
+		</div>
+		<section id="bottom">
+		</section>
+		<section id="setionsss"><div class="container">
+				
+
+				<h1><p class="studytimer" id="demo"></p></h1>
+				<button class="studytimer" onClick="start()">Start</button>
+				<button class="studytimer" onClick="stop()">Pause</button>
+			</div>
+			<div class="container" visibility="hidden">
+				
+				<h1><p class="breaktimer" id="demo2" visibility="hidden"></p></h1>
+				
+				<button class="breaktimer" visibility="hidden" onClick="start()">Start</button>
+				<button class="breaktimer" visibility="hidden" onClick="stop()">Pause</button>
+			</div>
+			</section>
+		
+	</div>
+		
+		
+		<!-- Upcomming Events Closed -->
+		
+		<!-- End of Query Section -->
+	<script>
+var timerOn = true;
+		start();
+		
+// Set the date we're counting down to
+var countDownStudy = 0.2 * 1000 * 60;
+var countDownTime = countDownStudy;//1500000;
+var countDownBreak = 0.1 * 1000 * 60;
+var counter = 0;
+// Update the count down every 1 second
+	  document.getElementById('mid').appendChild(  document.getElementById('setionsss'));
+	
+var flag = true;
+
+		
+var x = setInterval(function() {
+	if(timerOn){
+		// Get today's date and time
+		counter += 1000;
+  
+	
+    
+  // Find the distance between now and the count down date
+  var distance = countDownTime - counter;
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  hours = (hours == 0) ? "" : hours + ":";
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  seconds = (seconds >= 10) ? seconds : "0" + seconds;
+	
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML =   hours + minutes + ":" + seconds ;
+	document.getElementById("demo2").innerHTML =  hours + minutes + ":" + seconds ;
+    console.log(distance);
+  // If the count down is over, write some text 
+  if (distance <= 0) {
+	  counter = 0;
+	  console.log(hours + minutes + ":" + seconds );
+	  countDownTime = (countDownTime == countDownStudy) ? countDownBreak : countDownStudy;
+	  
+	  for(var i = 0; i <  document.getElementsByClassName("studytimer").length; i++){
+		  document.getElementsByClassName("studytimer").item(i).style.visibility = "hidden";
+	  }
+//	  
+	  
+	  for(var i = 0; i <  document.getElementsByClassName("breaktimer").length; i++){
+		  document.getElementsByClassName("breaktimer").item(i).style.visibility = "visible";
+	  }
+	  
+	  let element = document.getElementById("hotdog");
+      let hidden = element.getAttribute("hidden");
+	   let video3 = document.getElementById("video3");
+	  element.play();
+	  if(hidden){  
+		    video3.pause();
+			element.play();
+		  	element.removeAttribute("hidden");
+		  document.getElementById('bottom').appendChild(  document.getElementById('setionsss'));
+		  
+	  } else{
+		  	video3.play();
+			element.pause();
+		    element.setAttribute("hidden", "hidden");
+        	document.getElementById('mid').appendChild(  document.getElementById('setionsss'));
+		
+	  }
+	    
+	 
+	  
+	  
+	  
+		
+	 
+  }
+  }
+}, 1000);
+		
+		
+function start(){
+	timerOn = true;
+
+	
+}
+
+function stop(){
+	timerOn = false;
+	
+}
+</script>
+	<script>
+		</script>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/lightbox.js"></script>
+	<script type="text/javascript" src="js/all.js"></script>
+	<script type="text/javascript" src="js/owl.carousel.js"></script>
+	<script type="text/javascript" src="js/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="js/jquery.rateyo.js"></script>
+	<script type="text/javascript" src="js/jquery.mmenu.all.js"></script>
+	<script type="text/javascript" src="js/custom.js"></script>
+</body>
+</html>
