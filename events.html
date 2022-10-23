@@ -25,15 +25,29 @@
 				<img src="images/page-banner2.jpg" alt="Image of Bannner">
 				<img src="images/page-banner3.jpg" alt="Image of Bannner">
 			</div>
+			
 			<div class="container">
-				<iframe class = "studytimer youtube" id="video" width="420" height="315"
-						src="https://www.youtube.com/embed/tgbNymZ7vqY?" allowfullscreen></iframe>
+			<video class="breaktimer" width="840 "  id="hotdog" hidden="hidden" controls>
+					  <source src="videoplayback.mp4" type="video/mp4">
+				</video>
+			</div>
+			</section>
+					
+			<section><div class="container">
 				
-				<iframe class="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/glEiPXAYE-U?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe>
+
 				<h1><p class="studytimer" id="demo"></p></h1>
 				<button class="studytimer" onClick="start()">Start</button>
 				<button class="studytimer" onClick="stop()">Pause</button>
 			</div>
+			<div class="container">
+				
+				<h1><p class="breaktimer" id="demo2" visibility="visible"></p></h1>
+				
+				<button class="breaktimer" visibility="visible" onClick="start()">Start</button>
+				<button class="breaktimer" visibility="hidden" onClick="stop()">Pause</button>
+			</div>
+			</section>
 		</div>
 	</div>
 		
@@ -42,11 +56,19 @@
 		
 		<!-- End of Query Section -->
 	<script>
-		var timerOn = true;
+var timerOn = true;
+		start();
+		
 // Set the date we're counting down to
-var countDownTime = 2000;//1500000;
+var countDownStudy = 0.1 * 1000 * 60;
+var countDownTime = countDownStudy;//1500000;
+var countDownBreak = 0.1 * 1000 * 60;
 var counter = 0;
 // Update the count down every 1 second
+	  
+	
+var flag = true;
+
 		
 var x = setInterval(function() {
 	if(timerOn){
@@ -64,25 +86,40 @@ var x = setInterval(function() {
   seconds = (seconds >= 10) ? seconds : "0" + seconds;
 	
   // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML =   hours
-  + minutes + ":" + seconds ;
-    
+  document.getElementById("demo").innerHTML =   hours + minutes + ":" + seconds ;
+	document.getElementById("demo2").innerHTML =  hours + minutes + ":" + seconds ;
+    console.log(distance);
   // If the count down is over, write some text 
   if (distance <= 0) {
-    clearInterval(x);
+	  counter = 0;
+	  console.log(hours + minutes + ":" + seconds );
+	  countDownTime = (countDownTime == countDownStudy) ? countDownBreak : countDownStudy;
 	  
-	  for(var i = 0; i <document.getElementsByClassName("youtube").length;i++ ){
-		  document.getElementsByClassName("youtube").item(i).contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*'); 
+	  for(var i = 0; i <  document.getElementsByClassName("studytimer").length; i++){
+		  document.getElementsByClassName("studytimer").item(i).style.visibility = "hidden";
 	  }
-	  
-//	  for(var i = 0; i <  document.getElementsByClassName("studytimer").length; i++){
-//		  document.getElementsByClassName("studytimer").item(i).style.display = "none";
-//	  }
 //	  
 	  
-
-	document.getElementsByClassName("youtube-video")[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-
+	  for(var i = 0; i <  document.getElementsByClassName("breaktimer").length; i++){
+		  document.getElementsByClassName("breaktimer").item(i).style.visibility = "visible";
+	  }
+	  
+	  let element = document.getElementById("hotdog");
+      let hidden = element.getAttribute("hidden");
+	  element.play();
+	  if(hidden){  
+			element.play();
+		  	element.removeAttribute("hidden");
+        	
+		  
+	  } else{
+			element.pause();
+		    element.setAttribute("hidden", "hidden");
+        	
+		
+	  }
+	  
+		
 	 
   }
   }
@@ -91,10 +128,13 @@ var x = setInterval(function() {
 		
 function start(){
 	timerOn = true;
+
+	
 }
-		
+
 function stop(){
 	timerOn = false;
+	
 }
 </script>
 	<script>
