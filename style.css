@@ -157,6 +157,42 @@ sup {
 	top: -0.5em;
 }
 
+
+video2 {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	z-index: -1;
+}
+
+.yitt{
+	height: 100vh;
+	width: 100%;
+	object-fit: contain;
+}
+
+.yitt .bitt {
+	color: white;
+	text-align: center;
+	position: absolute;
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	top: 40vh;
+}
+
+.yitt .bitt h1{
+	font-size: 4rem;
+	color: #fff;
+}
+.yitt p{
+	font-size: 1.8rem;
+	font-weight: 200;
+	text-transform: uppercase;
+	margin-bottom: 1.6rem;
+	color: #fff;
+}
 /* Embedded content
 	 ========================================================================== */
 
@@ -693,7 +729,7 @@ a:hover, a:active {
 
 
 .nav-desktop {
-	display: inline-block;
+	display: flex;
 }
 
 .nav-desktop li, .nav-desktop li a{
